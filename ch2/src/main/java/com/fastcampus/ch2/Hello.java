@@ -3,35 +3,34 @@ package com.fastcampus.ch2;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-// 1. ¿ø°Ý È£Ãâ °¡´ÉÇÑ ÇÁ·Î±×·¥À¸·Î µî·Ï (Controller)
+// 1. ì›ê²© í˜¸ì¶œ ê°€ëŠ¥í•œ í”„ë¡œê·¸ëž¨ìœ¼ë¡œ ë“±ë¡ (Controller)
 @Controller
 public class Hello {
-	int iv = 10;	// ÀÎ½ºÅÏ½º º¯¼ö(ÇÊµå)
-	static int cv = 20;		// static º¯¼ö(Á¤Àû)
-	
-	// 2. URL°ú ¸Þ¼Òµå ¿¬°á (RequestMapping. mappingÀ» ÀÇ¹Ì)
-	@RequestMapping("/hello")	// ("/hello") : URL ¼³Á¤ -> /hello URL°ú main ¸Þ¼Òµå°¡ ¿¬°á
-	private void main() {	// ¸Þ¼Òµå¸íÀº mainÀÌ ¾Æ´Ï¶óµµ »ó°ü¾øÀ½. main ¸Þ¼Òµå´Â ÀÎ½ºÅÏ½º ¸Þ¼Òµå (iv, cv º¯¼ö ¸ðµÎ »ç¿ë °¡´É)
-		System.out.println("Hello");	// À¥ÀÌ ¾Æ´Ï¶ó ÄÜ¼ÖÃ¢¿¡ Hello Ãâ·Â
-		System.out.println(cv);		// °¡´É
-		System.out.println(iv);		// °¡´É
+	int iv = 10;	// ì¸ìŠ¤í„´ìŠ¤ ë³€ìˆ˜(í•„ë“œ)
+	static int cv = 20;		// static ë³€ìˆ˜(ì •ì )
+
+	// 2. URLê³¼ ë©”ì†Œë“œ ì—°ê²° (RequestMapping. mappingì„ ì˜ë¯¸)
+	@RequestMapping("/hello")	// ("/hello") : URL ì„¤ì • -> /hello URLê³¼ main ë©”ì†Œë“œê°€ ì—°ê²°
+	private void main() {	// ë©”ì†Œë“œëª…ì€ mainì´ ì•„ë‹ˆë¼ë„ ìƒê´€ì—†ìŒ. main ë©”ì†Œë“œëŠ” ì¸ìŠ¤í„´ìŠ¤ ë©”ì†Œë“œ (iv, cv ë³€ìˆ˜ ëª¨ë‘ ì‚¬ìš© ê°€ëŠ¥)
+		System.out.println("Hello");	// ì›¹ì´ ì•„ë‹ˆë¼ ì½˜ì†”ì°½ì— Hello ì¶œë ¥
+		System.out.println(cv);		// ê°€ëŠ¥
+		System.out.println(iv);		// ê°€ëŠ¥
 	}
-	
-	public static void main2() {	// static ¸Þ¼Òµå (static º¯¼öÀÎ cv º¯¼ö¸¸ »ç¿ë °¡´É)
-		System.out.println(cv);		// °¡´É
-//		System.out.println(iv);		// ºÒ°¡´É
+
+	public static void main2() {	// static ë©”ì†Œë“œ (static ë³€ìˆ˜ì¸ cv ë³€ìˆ˜ë§Œ ì‚¬ìš© ê°€ëŠ¥)
+		System.out.println(cv);		// ê°€ëŠ¥
+//		System.out.println(iv);		// ë¶ˆê°€ëŠ¥
 	}
 }
 
 /*
- * main ¸Þ¼Òµå´Â static(Á¤Àû) ¸Þ¼Òµå°¡ ¾Æ´Ô¿¡µµ ºÒ±¸ÇÏ°í È£ÃâÀÌ °¡´É
- *  -> main ¸Þ¼Òµå´Â Å¬·¡½º ¸â¹öÀÎ ÀÎ½ºÅÏ½º ¸Þ¼ÒµåÀÌ±â ¶§¹®¿¡ °´Ã¼°¡ ÇÊ¼ö·Î »ý¼ºµÇ¾î¾ß È£ÃâÀÌ °¡´É
- *  -> °´Ã¼¸¦ Tomcat(WAS)ÀÌ ´ë½ÅÇÏ¿© »ý¼ºÇØÁÖ±â ¶§¹®¿¡ staticÀÌ ¾ø¾îµµ È£ÃâÀÌ °¡´ÉÇÔ 
+ * main ë©”ì†Œë“œëŠ” static(ì •ì ) ë©”ì†Œë“œê°€ ì•„ë‹˜ì—ë„ ë¶ˆêµ¬í•˜ê³  í˜¸ì¶œì´ ê°€ëŠ¥
+ *  -> main ë©”ì†Œë“œëŠ” í´ëž˜ìŠ¤ ë©¤ë²„ì¸ ì¸ìŠ¤í„´ìŠ¤ ë©”ì†Œë“œì´ê¸° ë•Œë¬¸ì— ê°ì²´ê°€ í•„ìˆ˜ë¡œ ìƒì„±ë˜ì–´ì•¼ í˜¸ì¶œì´ ê°€ëŠ¥
+ *  -> ê°ì²´ë¥¼ Tomcat(WAS)ì´ ëŒ€ì‹ í•˜ì—¬ ìƒì„±í•´ì£¼ê¸° ë•Œë¬¸ì— staticì´ ì—†ì–´ë„ í˜¸ì¶œì´ ê°€ëŠ¥í•¨ 
  *  
- * RequestMappingÀ¸·Î ¿¬°áµÈ ¸Þ¼Òµå´Â Á¢±ÙÁ¦¾îÀÚ¿Í »ó°ü¾øÀÌ À¥¿¡¼­ È£ÃâÀÌ °¡´É (Privateµµ È£Ãâ °¡´É)
- *  -> ±×·¯³ª À¥ÀÌ ¾Æ´Ñ ³»ºÎ¿¡¼­´Â È£Ãâ ºÒ°¡ (°°Àº ÆÐÅ°Áö¿¡¼­µµ ºÒ°¡)
- *  -> È£ÃâÀÌ °¡´ÉÇÑ ÀÌÀ¯´Â Reflection API¸¦ »ç¿ëÇÏ±â ¶§¹®
- *  -> Reflection API : Å¬·¡½º Á¤º¸¸¦ ¾ò°í ´Ù·ê ¼ö ÀÖ´Â °­·ÂÇÑ ±â´É Á¦°ø
- *  -> java. lang.reflect ÆÐÅ°Áö¸¦ Á¦°ø
+ * RequestMappingìœ¼ë¡œ ì—°ê²°ëœ ë©”ì†Œë“œëŠ” ì ‘ê·¼ì œì–´ìžì™€ ìƒê´€ì—†ì´ ì›¹ì—ì„œ í˜¸ì¶œì´ ê°€ëŠ¥ (Privateë„ í˜¸ì¶œ ê°€ëŠ¥)
+ *  -> ê·¸ëŸ¬ë‚˜ ì›¹ì´ ì•„ë‹Œ ë‚´ë¶€ì—ì„œëŠ” í˜¸ì¶œ ë¶ˆê°€ (ê°™ì€ íŒ¨í‚¤ì§€ì—ì„œë„ ë¶ˆê°€)
+ *  -> í˜¸ì¶œì´ ê°€ëŠ¥í•œ ì´ìœ ëŠ” Reflection APIë¥¼ ì‚¬ìš©í•˜ê¸° ë•Œë¬¸
+ *  -> Reflection API : í´ëž˜ìŠ¤ ì •ë³´ë¥¼ ì–»ê³  ë‹¤ë£° ìˆ˜ ìžˆëŠ” ê°•ë ¥í•œ ê¸°ëŠ¥ ì œê³µ
+ *  -> java. lang.reflect íŒ¨í‚¤ì§€ë¥¼ ì œê³µ
  */
-	

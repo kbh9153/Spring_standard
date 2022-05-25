@@ -1,4 +1,4 @@
-package com.fastcampus.ch2;
+package com.fastcampus.ch2.prac;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,15 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.ui.Model;
 import org.springframework.validation.support.BindingAwareModelMap;
 
-/*
- * @WebServlet Maven 설정 관련 오류 (Tomcat Library가 @WebServlet annotation을 가지고 있기 때문에 없으면 해석불가)
- *  - @WebServlet : @Controller + @RequestMapping
- *  - 해결방법 1 : pom.xml 내부 값 변경
- *  - 해결방법 2 : Tomcat Library 추가
- *   => 프로젝트 우클릭 -> Build Path -> Configure Build Path -> Library의 Classpath란에 Add Library -> Servrer Runtime -> Apache Tomcat 추가
- */
-@WebServlet("/myDispatcherServlet")  // http://localhost/ch2/myDispatcherServlet?year=2021&month=10&day=1
-public class MyDispatcherServlet extends HttpServlet {
+@WebServlet("/pracMyDispatcherServlet")  // http://localhost/ch2/myDispatcherServlet?year=2021&month=10&day=1
+public class PracMyDisPatcherServlet extends HttpServlet {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		Map map = request.getParameterMap();
@@ -97,7 +90,7 @@ public class MyDispatcherServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		
-		// 1. 뷰의 내용을 한줄씩 읽어서 하나의 문자열로 만든다.
+		// 1. 뷰의 내용을 한줄씩 읽어서 하나의 문자열로 만듬
 		Scanner sc = new Scanner(new File(getResolvedViewName(viewName)), "utf-8");
 		
 		while(sc.hasNextLine())
@@ -106,13 +99,13 @@ public class MyDispatcherServlet extends HttpServlet {
 		// 2. model을 map으로 변환 
 		Map map = model.asMap();
 		
-		// 3.key를 하나씩 읽어서 template의 ${key}를 value바꾼다.
+		// 3. view 파일의 ${key}를 map의 해당하는 value 변환
 		Iterator it = map.keySet().iterator();
 		
 		while(it.hasNext()) {
 			String key = (String)it.next();
 
-			// 4. replace()로 key를 value 치환한다.
+			// 4. replace()로 key를 value 변환
 			result = result.replace("${" + key + "}", map.get(key) + "");
 		}
 		

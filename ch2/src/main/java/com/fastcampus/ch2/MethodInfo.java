@@ -47,7 +47,7 @@ public class MethodInfo {
  *  => JRE 11 변경
  *   a. pom.xml 
      <properties>
-		<java-version>11</java-version> -> 11로 변경 (이 파일들을 사용할 참조값들을 설정)
+		<java-version>11</java-version> -> 11로 변경 (이 프로젝트 파일들이 사용할 참조값들을 설정)
 	 </properties>
 	 
 	 <plugin>

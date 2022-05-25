@@ -44,6 +44,5 @@ public class PracYoilTeller {
 			out.println("잘못 입력하셨습니다. 년, 월, 일로 입력해주십시오.");
 		}
 		
-		
 	}
 }

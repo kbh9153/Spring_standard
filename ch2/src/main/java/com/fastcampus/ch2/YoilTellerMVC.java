@@ -5,11 +5,19 @@ import java.util.Calendar;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 // YoilTellerMVC : YoilTeller 코드를 MVC 패턴을 사용하여 관심사 분리 처리(입력, 출력 부분을 분리)
 @Controller
 public class YoilTellerMVC {
+	
+	@ExceptionHandler(Exception.class)	// 예외처리
+	public String catcher(Exception ex) {
+		ex.printStackTrace();
+		return "yoilError";
+	}
 	
 	@RequestMapping("/getYoilMVC")	// Mapping은 중복된 값이 있으면 안됨
 //	public static void main(String[] args) {
@@ -19,7 +27,10 @@ public class YoilTellerMVC {
 		// 반환 타입을 void로 변경, return "yoil";이 없어도 가능. Mapping으로 설정된 urㅣ와 동일한 view(jsp)파일이 있으면 가능
 //	public ModelAndView main(int year, int month, int day) throws IOException {
 		// 매개변수로 model을 받지않고 반환 타입을 ModelAndView로 설정
-	public String main(int year, int month, int day, Model model) throws IOException {		// String 타입인 URL을 int 타입으로 변환 과정없이 year, month, day를 int 타입의 매개변수로 받음 -> 주로 사용하는 방식
+	public String main(@RequestParam(required=true) int year, 
+					   @RequestParam(required=true)int month,
+					   @RequestParam(required=true)int day,
+					   @RequestParam(required=true)Model model) throws IOException {	// String 타입인 URL을 int 타입으로 변환 과정없이 year, month, day를 int 타입의 매개변수로 받음 -> 주로 사용하는 방식
 		// 반환 타입이 String인 이유는 return "yoil"; 코드와 같이 반환하는 view 파일의 이름이 문자열이기 때문
 		
 		// 1. 입력 -> 매개변수 변경으로 분리하여 필요 X

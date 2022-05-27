@@ -6,8 +6,7 @@
 	<title>Home</title>
 </head>
 <body>
-	<P>${year}년 ${month}월 ${day}일은 ${yoil}요일입니다.</P>
+	<h3>year=<%=request.getParameter("year") %></h3>
+	<P>${myDate.year}년 ${myDate.month}월 ${myDate.day}일은 ${yoil}요일입니다.</P>
 </body>
 </html>
-
-<!-- ${} : EL(Express Language). 모델 객체가 가지고 있는 값이 들어갈 자리 -->

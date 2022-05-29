@@ -5,6 +5,8 @@ import java.net.URLEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /*
  * @GetMapping
@@ -30,14 +32,14 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 
 @Controller
-public class registerController {
+public class RegisterController {
 	
-//	@RequestMapping(value="/register/add", method={RequestMethod.POST, RequestMethod.GET})	 // {} 배열방식으로 POST, GET 요청방식 둘다 허용 가능
 //	@PostMapping("/register/add")	
 //	@GetMapping("/register/add")	
-//	public String register() {	// 단순히 신규회원 가입 화면을 보여주는 기능만을 담당
-//		return "registerForm";	// WEB-INF/views/registerForm.jsp
-//	}
+	@RequestMapping(value="/register/add", method={RequestMethod.POST, RequestMethod.GET})	 // {} 배열방식으로 POST, GET 요청방식 둘다 허용 가능
+	public String register() {	// 단순히 신규회원 가입 화면을 보여주는 기능만을 담당
+		return "registerForm";	// WEB-INF/views/registerForm.jsp
+	}
 // spring -> appServlet -> servlet-context.xml에 <view-controller path="/register/add" view-name="registerForm" /> 추가하면 register() 메소드와 동일한 기능 수행 
 	
 //	@RequestMapping(value="/register/save", method=RequestMethod.POST)	// 요청 GET 방식으로 회원가입 불가능. 오직 POST 방식만 가능 (= @PostMapping)
@@ -48,7 +50,7 @@ public class registerController {
 			String msg = URLEncoder.encode("ID를 잘못 입력하셨습니다.", "utf-8");	// 밑의 return과 같이 서버에서 URL을 직접 작성시 브라우저가 인코딩 불가. URLEncoder를 사용하여 직접 인코딩 필요
 			
 			model.addAttribute("msg", msg);	// 모델에 msg를 저장하여 view 파일에 전달
-			return "redirect:/register/add";	// 밑의 코드와 동일한 기능
+			return "forward:/register/add";	// 밑의 코드와 동일한 기능
 			// redirect는 재요청이기 때문에 model을 사용하여 view 파일에 전달이 불가능 -> 하지만 Spring이 자동적으로 위의 2줄의 코드를 밑의 1줄의 코드로 변환해주기 때문에 사용 가능
 //			return "redirect:/registerForm/add" + msg;	// URL 재작성(rewriting)
 		}
@@ -57,6 +59,6 @@ public class registerController {
 	}
 
 	private boolean isValid(User user) {
-		return true;
+		return false;
 	}
 }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *  - @ModelAttribute가 있어 MyDate 객체에 저장할 때 value 값을 Int 타입으로 변환이 필요
  *  - WebDataBinder이 자동으로 타입 변환을 실행하고 해당 데이터의 특정 범위가 설정되어 있으면 데이터 검증까지 실행
  *  - 실행 후 BidingResult에 변환, 검증된 값을 저장
+ *  - BindingResult는 작성시 Binding할 객체 뒤에 작성해줘야함
  */
 
 // webapp/WEB-INF/spring/root-context.xml : non-web 관련 설정파일
